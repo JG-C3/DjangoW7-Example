@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <style>
+    .rsp {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+    .rsp a {
+      margin: 0 2px;
+      padding: 10px 20px;
+      border: 1px solid;
+      border-radius: 15px;
+      text-decoration: none;
+    }
+    .rsp a:hover {
+      background-color: rgb(225, 225, 255);
+    }
+    .count {
+      width: 25%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+
+  {% block rsp %}
+    <h1>가위바위보 게임</h1>
+
+  {% endblock %}
+  <div class="count">
+    <p>승리 횟수 : {{win}}회</p>
+    <p>무승부 횟수 : {{draw}}회</p>
+    <p>패배 횟수 : {{lose}}회</p>
+
+    <a href="{% url 'game:reset' %}">초기화</a>
+  </div>
+
+  <h3>선택해주세요~</h3>
+  <div class="rsp">
+    <a href="{% url 'game:result' '가위' %}">가위</a>
+    <a href="{% url 'game:result' '바위' %}">바위</a>
+    <a href="{% url 'game:result' '보' %}">보</a>
+  </div>
+  
+{% endblock %}

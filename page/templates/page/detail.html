@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 10px;
+      border-bottom: 2px solid;
+    }
+    .title {
+      font-size: 1.5rem;
+    }
+    .content {
+      display: flex;
+      justify-content: left;
+      /* min-height : 최소 높이 지정 */
+      /* 20vh : 현재 스크린의 높이를 기준으로 20%의 높이를 차지 */
+      min-height: 20vh;
+      margin: 10px 0;
+    }
+    .right {
+      padding-top: 20px;
+      text-align: right;
+    }
+    .button {
+      padding: 8px 10px;
+      border: 1px solid;
+      border-radius: 10px;
+      background-color: Khaki;
+      color: SaddleBrown;
+      text-decoration: none;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <h1>작성 글 보기</h1>
+
+  <table>
+    <tr>
+      <td class="title">{{post.title}}</td>
+      <td>
+        <div class="right">
+          <a class="button" href="{% url 'page:update' post.id %}">수정</a>
+          <a class="button" href="{% url 'page:delete' post.id %}">삭제</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <!-- [미션] 날짜를 보여주는 형식을 'Y-m-d A f'로 지정하기 -->
+      <td colspan="2">작성일 : {{post.date|date:'Y-m-d A f'}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="content">
+          {{post.content}}
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="right">
+    <a class="button" href="{% url 'page:read' %}">글 목록</a>
+  </div>
+{% endblock %}

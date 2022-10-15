@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <style>
+    table {
+      width: 90%;
+      margin: auto;
+    }
+    /* tr td:nth-of-type(2) : tr 태그의 바로 하위 태그인 td 태그 중 2번째에 css 적용 */
+    tr td:nth-of-type(2) {
+      width: 90%;
+    }
+    input{
+      padding: 5px 10px;
+      font-family: 'GangwonEdu_OTFBoldA';
+      font-size: 16px;
+    }
+    /* input[type=text] : input 태그 중 type 속성명의 속성값이 text인 태그에 css 적용 */
+    input[type=text] {
+      width: 100%;
+      height: 20px;
+      border: 1px solid;
+      border-radius: 5px;
+    }
+    textarea {
+      width: 100%;
+      padding: 5px 10px;
+      border: 1px solid;
+      border-radius: 5px;
+      /* font-family : 폰트 종류 */
+      font-family: 'GangwonEdu_OTFBoldA';
+      font-size: 16px;
+    }
+    .right {
+      padding-top: 20px;
+      /* text-align : 텍스트의 정렬 방향 */
+      text-align: right;
+    }
+    .button {
+      padding: 5px 10px;
+      border: 1px solid;
+      border-radius: 10px;
+      background-color: Khaki;
+      color: SaddleBrown;
+      text-decoration: none;
+      /* cursor : 커서 모양 변경 */
+      cursor: pointer;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <h1>글수정</h1>
+
+  <!-- form의 전달방식을 post로 설정하기 -->
+  <form action="" method="post">
+    <!-- csrf_token 설정하기 -->
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td><label for="title">제목</label></td>
+        <!-- [코드 추가] 수정하기 전 title에 저장된 내용이 input 태그에 들어있도록 만들기 -->
+        <td><input class="title" name="title" id="title" type="text" value="post.title"></td>
+      </tr>
+    </table>
+    
+    <br>
+
+    <table>
+      <tr>
+        <td colspan="2">
+          <label for="content">내용</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <!-- [코드 추가] 수정하기 전 content에 저장된 내용이 textarea 태그에 들어있도록 만들기 -->
+          <textarea name="content" id="content" cols="30" rows="10">{{post.content}}</textarea>
+        </td>
+      </tr>
+    </table>
+
+    <div class="right">
+      <input class="button" type="submit" value="등록">
+    </div>
+  </form>
+{% endblock %}
