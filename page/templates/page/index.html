@@ -2,13 +2,7 @@
 {% load static %}
 
 {% block head %}
-  <style>
-    img {
-      /* 30% : 상위 태그(없으면 body 태그)의 넓이를 기준으로 30%의 넓이를 가짐 */
-      width: 30%;
-      border-radius: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/page/index.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -21,5 +15,5 @@
     <li>Django의 관리자 페이지에 대해 알아봅시다.</li>
   </ol>
 
-  <img src="{% static 'image/walnut.jpg' %}" alt="walnut">
+  <img src="{% static 'images/walnut.jpg' %}" alt="walnut">
 {% endblock %}

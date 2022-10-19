@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <style>
+    .weapon {
+      padding: 10px;
+      margin: 10px;
+    }
+    input {
+      font-family: 'GangwonEdu_OTFBoldA';
+    }
+    input[type=submit] {
+      padding: 5px 10px;
+      border: 1px solid;
+      border-radius: 10px;
+      background-color: Khaki;
+      color: SaddleBrown;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="weapon">
+      <label for="weapon-name">무기 이름</label>
+      <input name="weapon-name" id="weapon-name" type="text">
+    </div>
+
+    <div class="weapon">
+      <label for="weapon-power">무기 공격력</label>
+      <input name="weapon-power" id="weapon-power" type="number">
+    </div>
+
+    <div class="weapon">
+      <input type="submit" value="무기 생성">
+    </div>
+  </form>
+{% endblock %}

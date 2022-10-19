@@ -1,57 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
-  <style>
-    .right {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      /* align-items : flex-direction 방향을 기준으로 정렬 */
-      justify-content: right;
-      text-align: right;
-      padding-bottom: 20px;
-    }
-    .button {
-      padding: 5px 10px;
-      border: 1px solid;
-      border-radius: 10px;
-      background-color: Khaki;
-      color: SaddleBrown;
-      text-decoration: none;
-    }
-    table {
-      width: 100%;
-      margin: auto;
-    }
-    .index {
-      width: 1.2rem;
-      text-align: center;
-    }
-    .title {
-      width: auto;
-      padding: 5px 20px;
-    }
-    .date {
-      width: 6rem;
-      text-align: center;
-    }
-    th {
-      padding: 5px;
-      border-bottom: 2px solid;
-    }
-    td {
-      padding: 5px 10px;
-      border-bottom: 1px solid;
-    }
-    td a {
-      color: black;
-      text-decoration: none;
-    }
-    td a:hover {
-      color: purple;
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/page/read.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -68,13 +19,13 @@
       <th class="date">날짜</th>
     </tr>
     <!-- [미션] reversed를 이용해 for문을 거꾸로 반복하기 -->
-    {% for post in posts reversed %}
+    {% for posting in postings reversed %}
       <tr>
-        <!-- [미션] 반복문의 index를 거꾸로 가져오는 revcounter 사용 -->
+        <!-- [미션] forloop.revcounter를 이용하여 반복문의 index를 거꾸로 보여주기 -->
         <td class="index">{{forloop.revcounter}}</td>
-        <td class="title"><a href="{% url 'page:detail' post.id %}">{{post.title}}</a></td>
-        <!-- [미션] 날짜를 보여주는 형식을 'Y-m-d'로 지정하기 -->
-        <td class="date">{{post.date|date:'Y-m-d'}}</td>
+        <td class="title"><a href="{% url 'page:detail' posting.id %}">{{posting.title}}</a></td>
+        <!-- 날짜를 보여주는 형식을 'Y-m-d'로 지정하기 -->
+        <td class="date">{{posting.date|date:'Y-m-d'}}</td>
       </tr>
     <!-- for문의 리스트가 비어있을 경우에 보여주는 내용 -->
     {% empty %}

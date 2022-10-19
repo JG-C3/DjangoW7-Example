@@ -1,52 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
-  <style>
-    table {
-      width: 90%;
-      margin: auto;
-    }
-    /* tr td:nth-of-type(2) : tr 태그의 바로 하위 태그인 td 태그 중 2번째에 css 적용 */
-    tr td:nth-of-type(2) {
-      width: 90%;
-    }
-    input{
-      padding: 5px 10px;
-      font-family: 'GangwonEdu_OTFBoldA';
-      font-size: 16px;
-    }
-    /* input[type=text] : input 태그 중 type 속성명의 속성값이 text인 태그에 css 적용 */
-    input[type=text] {
-      width: 100%;
-      height: 20px;
-      border: 1px solid;
-      border-radius: 5px;
-    }
-    textarea {
-      width: 100%;
-      padding: 5px 10px;
-      border: 1px solid;
-      border-radius: 5px;
-      /* font-family : 폰트 종류 */
-      font-family: 'GangwonEdu_OTFBoldA';
-      font-size: 16px;
-    }
-    .right {
-      padding-top: 20px;
-      /* text-align : 텍스트의 정렬 방향 */
-      text-align: right;
-    }
-    .button {
-      padding: 5px 10px;
-      border: 1px solid;
-      border-radius: 10px;
-      background-color: Khaki;
-      color: SaddleBrown;
-      text-decoration: none;
-      /* cursor : 커서 모양 변경 */
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/page/create.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -60,7 +16,7 @@
       <tr>
         <td><label for="title">제목</label></td>
         <!-- [미션] 서버에 딕셔너리 형식으로 전달되는 값의 Key값을 'title'로 설정하기 -->
-        <td><input class="title" name="title" id="title" type="text"></td>
+        <td><input class="title" name="title" id="title" type="text" maxlength=50></td>
       </tr>
     </table>
     

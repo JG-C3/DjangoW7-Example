@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+td {
+  padding: 10px;
+  border-bottom: 2px solid;
+}
+.title {
+  font-size: 1.5rem;
+}
+.functions {
+  width: 7rem;
+  white-space: nowrap;
+}
+.content {
+  display: flex;
+  justify-content: left;
+  /* min-height : 최소 높이 지정 */
+  /* 20vh : 현재 스크린의 높이를 기준으로 20%의 높이를 차지 */
+  min-height: 20vh;
+  margin: 10px 0;
+}
+.right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  padding-top: 20px;
+  text-align: right;
+}
+.button {
+  margin: 1px 2px;
+  padding: 3px 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: Khaki;
+  color: SaddleBrown;
+  text-decoration: none;
+}
