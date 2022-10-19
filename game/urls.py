@@ -4,9 +4,11 @@ from . import views
 app_name = "game"
 
 urlpatterns = [
-    path('rsp/', views.rsp, name="rsp"),
-    path('rsp/<str:pick>', views.result, name="result"),
-    path('reset/', views.reset, name="reset"),
-    path('create-weapon/', views.create_weapon, name="create_weapon"),
-    path('list-weapon/', views.list_weapon, name="list_weapon"),
+    path('', views.game_list, name="game_list"),
+    path('rsp/', views.rsp_select, name="rsp_select"),
+    path('rsp/<str:pick>', views.rsp_result, name="rsp_result"),
+    path('rsp/reset/', views.rsp_reset, name="rsp_reset"),
+    path('weapon-create/', views.weapon_create, name="weapon_create"),
+    path('weapon-list/', views.weapon_list, name="weapon_list"),
+    path('character-list/', views.character_list, name="character_list"),
 ]

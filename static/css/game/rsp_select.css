@@ -1,0 +1,21 @@
+.rsp {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+.rsp a {
+  margin: 0 2px;
+  padding: 10px 20px;
+  border: 1px solid;
+  border-radius: 15px;
+  text-decoration: none;
+}
+.rsp a:hover {
+  background-color: rgb(225, 225, 255);
+}
+.count {
+  width: 25%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid;
+}
