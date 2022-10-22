@@ -1,8 +1,7 @@
-import re
 from django.shortcuts import render, redirect
 from random import *
 # [미션] models.py의 Weapon 모델 불러오기
-from .models import Weapon
+from .models import Weapon, Character
 
 # Create your views here.
 win = 0
@@ -79,9 +78,28 @@ def weapon_list(request):
     }
     return render(request, 'game/weapon_list.html', context)
 
+def character_create(request):
+    if request.method == 'POST':
+        character_name = request.POST.get('character-name')
+        
+        Character.objects.create(
+            name = character_name,
+        )
+        return redirect('game:character_list')
+    else:
+        return render(request, 'game/weapon_create.html')
+
 def character_list(request):
-    
+    characters = Character.objects.all()
+    if request.method == 'POST':
+        character_name = request.POST.get('character-name')
+        
+        Character.objects.create(
+            name = character_name,
+        )
+        return redirect('game:character_list')
+
     context = {
-        'characters': None,
+        'characters': characters,
     }
     return render(request,'game/character_list.html', context)

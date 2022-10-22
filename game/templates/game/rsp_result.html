@@ -1,6 +1,10 @@
 {% extends 'game/rsp_select.html' %}
 
-{% block rsp %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/game/rsp_result.css' %}">
+{% endblock %}
+
+{% block rsp_body %}
   <h1>가위바위보 게임 결과</h1>
   
   <!-- [미션] 가위바위보 중에서 내가 선택한 결과 보여주기 -->

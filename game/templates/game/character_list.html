@@ -7,5 +7,23 @@
 
 {% block body %}
   <h1>캐릭터 목록</h1>
+
+  {% for character in characters %}
+    <p><li>{{character.name}}</li></p>
+  {% empty %}
+    <p><li>캐릭터를 선택해주세요.</li></p>
+  {% endfor %}
+  <hr>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="character">
+      <input name="character-name" id="character-name" type="text" placeholder="캐릭터 이름을 입력해주세요.">
+      <input type="submit" value="캐릭터 생성">
+    </div>
+
+  </form>
+
+
   
 {% endblock %}
