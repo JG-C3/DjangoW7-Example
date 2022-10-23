@@ -8,7 +8,7 @@
   <title>jgDjango</title>
   <link rel="icon" href="{% static 'images/favicon-96x96.png' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base-dark.css' %}">
   {% block head %}
   {% endblock %}
 </head>
@@ -18,15 +18,6 @@
       <a href="{% url 'page:index' %}">
         <img class="logo" src="{% static 'images/jgcat.jpg' %}" alt="jgcat">
       </a>
-    </span>
-    <span>
-      <a href="{% url 'page:posting_list' %}">글목록</a>
-    </span>
-    <span>
-      <a href="{% url 'page:posting_create' %}">글쓰기</a>
-    </span>
-    <span>
-      <a href="{% url 'game:game_list' %}">게임목록</a>
     </span>
   </div>
 

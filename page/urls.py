@@ -5,9 +5,9 @@ app_name = "page"
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('create/', views.create, name="create"),
-    path('read/', views.read, name="read"),
-    path('<int:posting_id>/', views.detail, name="detail"),
-    path('<int:posting_id>/update/', views.update, name="update"),
-    path('<int:posting_id>/delete/', views.delete, name="delete"),
+    path('create/', views.posting_create, name="posting_create"),
+    path('list/', views.posting_list, name="posting_list"),
+    path('<int:posting_id>/', views.posting_detail, name="posting_detail"),
+    path('<int:posting_id>/update/', views.posting_update, name="posting_update"),
+    path('<int:posting_id>/delete/', views.posting_delete, name="posting_delete"),
 ]

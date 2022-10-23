@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/page/posting_detail.css' %}">
+{% endblock %}
+
+{% block body %}
+  <h1>작성 글 보기</h1>
+
+  <div class="posting">
+    <table>
+      <tr>
+        <td class="title">{{posting.title}}</td>
+        <td class="functions">
+          <div class="right">
+            <a class="button" href="{% url 'page:posting_update' posting.id %}">수정</a>
+            <a class="button" href="{% url 'page:posting_delete' posting.id %}">삭제</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <!-- [미션] 날짜를 보여주는 형식을 'Y-m-d A f'로 지정하기 -->
+        <td colspan="2">작성일 : {{posting.date|date:'Y-m-d A f'}}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="content">
+            {{posting.content}}
+          </div>
+        </td>
+      </tr>
+    </table>
+    
+    <div class="right">
+      <a class="button" href="{% url 'page:posting_list' %}">글 목록</a>
+    </div>
+  </div>
+
+  <div class="comment">
+    <form action="" method="post">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>
+            <textarea name="" id="" cols="30" rows="2" maxlength=""></textarea>
+          </td>
+          <td>
+            <input type="submit" value="작성">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+{% endblock %}
