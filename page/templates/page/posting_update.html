@@ -8,14 +8,11 @@
 {% block body %}
   <h1>글수정</h1>
 
-  <!-- form의 전달방식을 post로 설정하기 -->
   <form action="" method="post">
-    <!-- csrf_token 설정하기 -->
     {% csrf_token %}
     <table>
       <tr>
         <td><label for="title">제목</label></td>
-        <!-- [코드 추가] 수정하기 전 title에 저장된 내용이 input 태그에 들어있도록 만들기 -->
         <td><input class="title" name="title" id="title" type="text" maxlength=50 value="{{posting.title}}"></td>
       </tr>
     </table>
@@ -30,7 +27,6 @@
       </tr>
       <tr>
         <td colspan="2">
-          <!-- [코드 추가] 수정하기 전 content에 저장된 내용이 textarea 태그에 들어있도록 만들기 -->
           <textarea name="content" id="content" cols="30" rows="10">{{posting.content}}</textarea>
         </td>
       </tr>

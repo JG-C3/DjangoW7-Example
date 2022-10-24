@@ -18,16 +18,12 @@
       <th class="title">제목</th>
       <th class="date">날짜</th>
     </tr>
-    <!-- [미션] reversed를 이용해 for문을 거꾸로 반복하기 -->
     {% for posting in postings reversed %}
       <tr>
-        <!-- [미션] forloop.revcounter를 이용하여 반복문의 index를 거꾸로 보여주기 -->
         <td class="index">{{forloop.revcounter}}</td>
         <td class="title"><a href="{% url 'page:posting_detail' posting.id %}">{{posting.title}}</a></td>
-        <!-- 날짜를 보여주는 형식을 'Y-m-d'로 지정하기 -->
         <td class="date">{{posting.date|date:'Y-m-d'}}</td>
       </tr>
-    <!-- for문의 리스트가 비어있을 경우에 보여주는 내용 -->
     {% empty %}
       <tr>
         <td class="index">-</td>

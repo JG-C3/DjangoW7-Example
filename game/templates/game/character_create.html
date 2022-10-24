@@ -1,19 +1,12 @@
-{% extends 'base_dark.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block head %}
-  <link rel="stylesheet" href="{% static 'css/game/character_list.css' %}">
+  <link rel="stylesheet" href="{% static 'css/game/character_create.css' %}">
 {% endblock %}
 
 {% block body %}
-  <h1>캐릭터 목록</h1>
-
-  {% for character in characters %}
-    <p><li>{{character.name}}</li></p>
-  {% empty %}
-    <p><li>캐릭터를 선택해주세요.</li></p>
-  {% endfor %}
-  <hr>
+  <h1>캐릭터 생성</h1>
 
   <form action="" method="post">
     {% csrf_token %}

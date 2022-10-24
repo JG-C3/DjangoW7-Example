@@ -8,14 +8,11 @@
 {% block body %}
   <h1>글쓰기</h1>
   
-  <!-- [미션] form의 전달방식을 post로 설정하기 -->
   <form action="" method="post">
-    <!-- [미션] csrf_token 설정하기 -->
     {% csrf_token %}
     <table>
       <tr>
         <td><label for="title">제목</label></td>
-        <!-- [미션] 서버에 딕셔너리 형식으로 전달되는 값의 Key값을 'title'로 설정하기 -->
         <td><input class="title" name="title" id="title" type="text" maxlength=50></td>
       </tr>
     </table>
@@ -30,7 +27,6 @@
       </tr>
       <tr>
         <td colspan="2">
-          <!-- [미션] 서버에 딕셔너리 형식으로 전달되는 값의 Key값을 'content'로 설정하기 -->
           <textarea name="content" id="content" cols="30" rows="10"></textarea>
         </td>
       </tr>
