@@ -21,7 +21,6 @@ input[type=submit] {
   font-size: 1rem;
   cursor: pointer;
 }
-
 /* 작성 글 */
 .posting__detail {
   width: 100%;
@@ -50,7 +49,6 @@ input[type=submit] {
   justify-content: end;
   margin-top: 10px;
 }
-
 /* 댓글 */
 .posting__comment {
   width: 100%;
@@ -96,12 +94,13 @@ input[type=submit] {
   background-color: transparent;
   cursor: pointer;
 }
+/* 댓글 작성일 */
 .posting__comment__date {
   padding: 10px 30px 0px;
   color: Peru;
   font-size: 0.8rem;
-
 }
+/* 댓글 구분선 */
 .posting__comment__line {
   margin: 0 20px 20px;
   border: 0.5px solid SaddleBrown;
