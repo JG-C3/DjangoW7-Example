@@ -9,50 +9,83 @@
   <h1>작성 글 보기</h1>
 
   <div class="posting">
-    <table>
+    <table class="posting__detail">
       <tr>
-        <td class="title">{{posting.title}}</td>
-        <td class="functions">
-          <div class="right">
+        <td class="posting__detail__title">{{posting.title}}</td>
+        <td class="posting__detail__function">
+          <div>
             <a class="button" href="{% url 'page:posting_update' posting.id %}">수정</a>
-            <form action="{% url 'page:posting_delete' posting.id %}" method="post">
+            <form action="" method="post">
               {% csrf_token %}
               <input class="button" type="submit" value="삭제">
-              <!-- <a class="button" href="{% url 'page:posting_delete' posting.id %}">삭제</a> -->
             </form>
           </div>
         </td>
       </tr>
       <tr>
-        <td colspan="2">작성일 : {{posting.date|date:'Y-m-d A f'}}</td>
+        <td class="posting__detail__date" colspan="2">작성일 : {{posting.date|date:'Y-m-d A f'}}</td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td class="posting__detail__content" colspan="2">
           <div class="content">
             {{posting.content}}
           </div>
         </td>
       </tr>
+      <tr>
+        <td class="posting__detail__function transparent" colspan="2">
+          <div>
+            <a class="button" href="{% url 'page:posting_list' %}">글 목록</a>
+          </div>
+        </td>
+      </tr>
     </table>
-    
-    <div class="right">
-      <a class="button" href="{% url 'page:posting_list' %}">글 목록</a>
-    </div>
-  </div>
 
-  <div class="comment">
-    <form action="" method="post">
-      {% csrf_token %}
-      <table>
+    <table class="posting__comment">
+      <tr>
+        <th>댓글</th>
+      </tr>
+      <tr>
+        <td class="posting__comment__create" colspan="2">
+          <form action="" method="post">
+            {% csrf_token %}
+            <div>
+              {{comment_form.as_div}}
+              <input class="button" type="submit" value="작성">
+            </div>
+          </form>
+        </td>
+      </tr>
+      {% for comment in comments %}
         <tr>
-          <td>
-            <textarea name="" id="" cols="30" rows="2" maxlength=""></textarea>
+          <td class="posting__comment__content">
+            {{comment.content}}
           </td>
-          <td>
-            <input type="submit" value="작성">
+          <td class="posting__comment__delete" rowspan="2">
+            x
           </td>
         </tr>
-      </table>
-    </form>
+        <tr>
+          <td class="posting__comment__date">
+            {{comment.date|date:'Y-m-d A f'}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <hr class="posting__comment__line">
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td class="posting__comment__content">
+            <div>
+              <span>댓글이 아직 작성되지 않았습니다.</span>
+              <span></span>
+            </div>
+            <hr class="posting__comment__line">
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
   </div>
 {% endblock %}

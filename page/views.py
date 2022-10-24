@@ -1,36 +1,28 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Posting
-# [코드 추가] forms.py의 PostingForm 불러오기
-from .forms import PostingForm
+from .models import Posting, Comment
+from .forms import PostingForm, CommentForm
 
 # Create your views here.
 def index(request):
     return render(request, 'page/index.html')
 
-# Create
+# [Create] 글 작성
 def posting_create(request):
     if request.method == 'POST':
-        # [코드 작성] POST 방식으로 넘어온 값을 form에 저장
-        form = PostingForm(request.POST)
+        posting_form = PostingForm(request.POST)
 
-        # [코드 작성] form이 유효한지 확인
-        if form.is_valid():
-            # [코드 작성] posting 객체 생성
-            posting = Posting()
-            posting.title = form.cleaned_data.get('title')
-            posting.content = form.cleaned_data.get('content')
-
-            # [코드 작성] posting 객체 저장
-            posting.save()
+        if posting_form.is_valid():
+            posting_form.save()
             return redirect('page:posting_list')
     
-    form = PostingForm()
+    posting_form = PostingForm()
     context = {
-        'form': form,
+        'posting_type': '글쓰기',
+        'posting_form': posting_form,
     }
     return render(request, 'page/posting_form.html', context)
 
-# Read
+# [Read] 글 목록
 def posting_list(request):
     postings = Posting.objects.all()
     context = {
@@ -38,31 +30,44 @@ def posting_list(request):
     }
     return render(request, 'page/posting_list.html', context)
 
-# Read
+# [Read & Create] 작성 글 보기 & 댓글 작성
 def posting_detail(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.posting = posting
+            comment.save()
+            return redirect('page:posting_detail', posting_id)
+
+    comment_form = CommentForm()
+    comments = posting.comments.all()
     context = {
         'posting': posting,
+        'comment_form': comment_form,
+        'comments': comments,
     }
     return render(request, 'page/posting_detail.html', context)
 
-# Update
+# [Update] 글 수정
 def posting_update(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)
 
     if request.method == 'POST':
-        # [코드 작성] POST 방식으로 넘어온 값을 form에 저장
-        form = PostingForm(request.POST, instance=posting)
+        posting_form = PostingForm(request.POST, instance=posting)
 
-        # [코드 작성] form이 유효한지 확인
-        if form.is_valid():
-            form.save()
+        if posting_form.is_valid():
+            posting_form.save()
             return redirect('page:posting_detail', posting_id)
     else:
-        form = PostingForm(instance=posting)
+        posting_form = PostingForm(instance=posting)
 
     context = {
-        'form': form,
+        'posting_type': '글수정',
+        'posting_form': posting_form,
     }
     return render(request, 'page/posting_form.html', context)
 

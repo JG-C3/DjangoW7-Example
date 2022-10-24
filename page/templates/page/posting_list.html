@@ -8,28 +8,31 @@
 {% block body %}
   <h1>작성 글 목록</h1>
 
-  <div class="right">
-    <a class="button" href="{% url 'page:posting_create' %}">글쓰기</a>
+  <div class="posting">
+    <div class="posting__function--top">
+      <a class="button" href="{% url 'page:posting_create' %}">글쓰기</a>
+    </div>
+  
+    <table class="posting__list">
+      <tr>
+        <th class="index">번호</th>
+        <th class="title">제목</th>
+        <th class="date">날짜</th>
+      </tr>
+      {% for posting in postings reversed %}
+        <tr>
+          <td class="index">{{forloop.revcounter}}</td>
+          <td class="title"><a href="{% url 'page:posting_detail' posting.id %}">{{posting.title}}</a></td>
+          <td class="date">{{posting.date|date:'Y-m-d'}}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td class="index">-</td>
+          <td class="title">글을 작성해주세요.</td>
+          <td class="date">-</td>
+        </tr>
+      {% endfor %}
+    </table>
   </div>
 
-  <table>
-    <tr>
-      <th class="index">번호</th>
-      <th class="title">제목</th>
-      <th class="date">날짜</th>
-    </tr>
-    {% for posting in postings reversed %}
-      <tr>
-        <td class="index">{{forloop.revcounter}}</td>
-        <td class="title"><a href="{% url 'page:posting_detail' posting.id %}">{{posting.title}}</a></td>
-        <td class="date">{{posting.date|date:'Y-m-d'}}</td>
-      </tr>
-    {% empty %}
-      <tr>
-        <td class="index">-</td>
-        <td class="title">글을 작성해주세요.</td>
-        <td class="date">-</td>
-      </tr>
-    {% endfor %}
-  </table>
 {% endblock %}

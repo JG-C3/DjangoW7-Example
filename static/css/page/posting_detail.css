@@ -1,43 +1,105 @@
-.posting table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-.posting td {
-  padding: 10px;
-  border-bottom: 2px solid;
-}
-.posting .title {
-  font-size: 1.5rem;
-}
-.posting .functions {
-  width: 7rem;
-  white-space: nowrap;
-}
-.posting .content {
+.button {
   display: flex;
-  justify-content: left;
-  /* min-height : 최소 높이 지정 */
-  /* 20vh : 현재 스크린의 높이를 기준으로 20%의 높이를 차지 */
-  min-height: 20vh;
-  margin: 10px 0;
-}
-.posting .right {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: right;
-  padding-top: 20px;
-  text-align: right;
-}
-.posting .button {
-  margin: 1px 2px;
-  padding: 3px 10px;
+  flex-wrap: nowrap;
+  margin: 0 2px;
+  padding: 2px 9.5px;
   border: 1px solid;
   border-radius: 10px;
   background-color: Khaki;
   color: SaddleBrown;
   text-decoration: none;
 }
-.comment {
-  margin: 30px 0;
+.content {
+  display: flex;
+  justify-content: left;
+  /* min-height : 최소 높이 지정 */
+  /* 20vh : 현재 스크린의 높이를 기준으로 20%의 높이를 차지 */
+  min-height: 20vh;
+  margin: 10px 5px;
 }
+input[type=submit] {
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1rem;
+}
+
+/* 작성 글 */
+.posting__detail {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.posting__detail td {
+  padding: 10px;
+  border-bottom: 1.5px solid;
+}
+.posting__detail td.transparent {
+  border-color: transparent;
+}
+/* 작성 글 제목 */
+.posting__detail__title {
+  font-size: 1.5rem;
+}
+/* 작성 글 버튼 */
+.posting__detail__function {
+  width: 7rem;
+  white-space: nowrap;
+}
+.posting__detail__function > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+/* 댓글 */
+.posting__comment {
+  width: 100%;
+  margin-top: 30px;
+  background-color: PaleGoldenrod;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.posting__comment th {
+  padding: 20px 20px 10px;
+  text-align: left;
+}
+/* .posting__comment td {
+  padding: 10px 30px;
+} */
+/* 댓글 입력 */
+.posting__comment__create div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.posting__comment__create input[type=text] {
+  width: 100%;
+  height: 20px;
+  margin: 0 5px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+/* 댓글 삭제 */
+.posting__comment__content {
+  width: 100%;
+}
+
+
+
+/* 
+.posting__comment__list div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5px;
+}
+.posting__comment__list span {
+  padding-top: 5px;
+}
+.posting__comment__list span:last-child {
+  color: Peru;
+  font-size: 0.8rem;
+}
+
+.posting__comment__line {
+  border: 1px solid SaddleBrown;
+} */
