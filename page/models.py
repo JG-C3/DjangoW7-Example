@@ -13,7 +13,7 @@ class Posting(models.Model):
         return self.title
 
 class Comment(models.Model):
-    posting = models.ForeignKey(Posting, on_delete=models.CASCADE, related_name='comments')
+    posting = models.ForeignKey(Posting, on_delete=models.CASCADE, related_name='comment_list')
     content = models.CharField(max_length=300)
     date = models.DateTimeField(auto_now_add=True)
 

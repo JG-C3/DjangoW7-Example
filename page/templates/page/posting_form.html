@@ -14,7 +14,10 @@
       {{posting_form.as_p}}
   
       <div class="posting-form__function--bottom">
-        <input type="submit" value="등록">
+        {% if posting %}
+          <a class="button" href="{% url 'page:posting_detail' posting.id %}">취소</a>
+        {% endif %}
+        <input class="button" type="submit" value="등록">
       </div>
     </form>
   </div>

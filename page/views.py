@@ -44,7 +44,7 @@ def posting_detail(request, posting_id):
             return redirect('page:posting_detail', posting_id)
 
     comment_form = CommentForm()
-    comments = posting.comments.all()
+    comments = posting.comment_list.all()
     context = {
         'posting': posting,
         'comment_form': comment_form,
@@ -67,6 +67,7 @@ def posting_update(request, posting_id):
 
     context = {
         'posting_type': '글수정',
+        'posting': posting,
         'posting_form': posting_form,
     }
     return render(request, 'page/posting_form.html', context)
@@ -78,3 +79,9 @@ def posting_delete(request, posting_id):
         posting.delete()
         return redirect('page:posting_list')
     return redirect('page:posting_detail', posting_id)
+
+def comment_delete(request, posting_id, comment_id):
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment.delete()
+        return redirect('page:posting_detail', posting_id)

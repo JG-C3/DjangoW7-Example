@@ -7,7 +7,7 @@
   flex-direction: row;
   /* flex-wrap : 줄바꿈 방법 */
   flex-wrap: wrap;
-  padding: 5px 50px;
+  padding: 5px 5vw;
   /* background-color : 배경색 설정 */
   background-color: MediumTurquoise;
 }
