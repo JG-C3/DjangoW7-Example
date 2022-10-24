@@ -15,7 +15,11 @@
         <td class="functions">
           <div class="right">
             <a class="button" href="{% url 'page:posting_update' posting.id %}">수정</a>
-            <a class="button" href="{% url 'page:posting_delete' posting.id %}">삭제</a>
+            <form action="{% url 'page:posting_delete' posting.id %}" method="post">
+              {% csrf_token %}
+              <input class="button" type="submit" value="삭제">
+              <!-- <a class="button" href="{% url 'page:posting_delete' posting.id %}">삭제</a> -->
+            </form>
           </div>
         </td>
       </tr>
