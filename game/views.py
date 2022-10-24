@@ -70,13 +70,3 @@ def weapon_list(request):
     }
     return render(request, 'game/weapon_list.html', context)
 
-def character_create(request):
-    if request.method == 'POST':
-        character_name = request.POST.get('character-name')
-        
-        Character.objects.create(
-            name = character_name,
-        )
-        return redirect('game:character_create')
-    else:
-        return render(request, 'game/character_create.html')
