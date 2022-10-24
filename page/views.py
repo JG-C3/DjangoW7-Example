@@ -14,8 +14,9 @@ def posting_create(request):
         if posting_form.is_valid():
             posting_form.save()
             return redirect('page:posting_list')
+    else:
+        posting_form = PostingForm()
     
-    posting_form = PostingForm()
     context = {
         'posting_type': '글쓰기',
         'posting_form': posting_form,
@@ -42,8 +43,9 @@ def posting_detail(request, posting_id):
             comment.posting = posting
             comment.save()
             return redirect('page:posting_detail', posting_id)
+    else :
+        comment_form = CommentForm()
 
-    comment_form = CommentForm()
     comments = posting.comment_list.all()
     context = {
         'posting': posting,
@@ -72,7 +74,7 @@ def posting_update(request, posting_id):
     }
     return render(request, 'page/posting_form.html', context)
 
-# Delete
+# [Delete] 글 삭제
 def posting_delete(request, posting_id):
     if request.method == 'POST':
         posting = get_object_or_404(Posting, id=posting_id)
@@ -80,6 +82,7 @@ def posting_delete(request, posting_id):
         return redirect('page:posting_list')
     return redirect('page:posting_detail', posting_id)
 
+# [Delete] 댓글 삭제
 def comment_delete(request, posting_id, comment_id):
     if request.method == 'POST':
         comment = get_object_or_404(Comment, id=comment_id)
