@@ -11,7 +11,7 @@
     <h1>가위바위보 게임</h1>
 
   {% endblock %}
-  <div class="count">
+  <div class="rsp__count">
     <p>승리 횟수 : {{win}}회</p>
     <p>무승부 횟수 : {{draw}}회</p>
     <p>패배 횟수 : {{lose}}회</p>
@@ -20,7 +20,7 @@
   </div>
 
   <h3>선택해주세요~</h3>
-  <div class="rsp">
+  <div class="rsp__button">
     <a href="{% url 'game:rsp_result' '가위' %}">가위</a>
     <a href="{% url 'game:rsp_result' '바위' %}">바위</a>
     <a href="{% url 'game:rsp_result' '보' %}">보</a>
