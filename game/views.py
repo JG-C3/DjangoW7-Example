@@ -69,4 +69,3 @@ def weapon_list(request):
         'weapons': weapons,
     }
     return render(request, 'game/weapon_list.html', context)
-
