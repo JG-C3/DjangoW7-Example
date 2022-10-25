@@ -15,6 +15,7 @@
         <td class="posting__detail__function">
           <div>
             <a class="button" href="{% url 'page:posting_update' posting.id %}">수정</a>
+            <!-- [코드 추가] POST 방식으로 작성글 삭제 후 action을 이용해 해당 url로 이동 -->
             <form action="{% url 'page:posting_delete' posting.id %}" method="post">
               {% csrf_token %}
               <input class="button" type="submit" value="삭제">
@@ -47,21 +48,26 @@
       </tr>
       <tr>
         <td class="posting__comment__create" colspan="2">
+          <!-- POST 방식으로 댓글 작성 -->
           <form action="" method="post">
             {% csrf_token %}
             <div>
+              <!-- [코드 작성] Django에서 생성된 comment_form을 div태그 안쪽에 배치 -->
               {{comment_form.as_div}}
               <input class="button" type="submit" value="작성">
             </div>
           </form>
         </td>
       </tr>
+      <!-- 반복문을 이용하여 전체 댓글 보여주기 -->
       {% for comment in comments %}
         <tr>
           <td class="posting__comment__content">
+            <!-- 댓글 내용 -->
             {{comment.content}}
           </td>
           <td class="posting__comment__delete" rowspan="2">
+            <!-- [코드 추가] POST 방식으로 댓글 삭제 후 action을 이용해 해당 url로 이동 -->
             <form action="{% url 'page:comment_delete' posting_id=posting.id comment_id=comment.id %}" method="post">
               {% csrf_token %}
               <input type="submit" value="x">
@@ -70,11 +76,13 @@
         </tr>
         <tr>
           <td class="posting__comment__date">
+            <!-- 댓글 작성 시간 -->
             {{comment.date|date:'Y-m-d A f'}}
           </td>
         </tr>
         <tr>
           <td colspan="2">
+            <!-- 댓글 구분 선 -->
             <hr class="posting__comment__line">
           </td>
         </tr>
