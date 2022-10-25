@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from random import *
-from .models import Weapon, Character
+from .models import Weapon
 
 # Create your views here.
 win = 0
