@@ -1,9 +1,9 @@
 # [코드 추가] get_object_or_404 불러오기
 from django.shortcuts import render, redirect, get_object_or_404
 # [코드 추가] models.py의 Comment 모델 불러오기
-from .models import Posting, Comment
+from .models import Posting
 # [코드 작성] forms.py의 PostingForm, CommentForm 불러오기
-from .forms import PostingForm, CommentForm
+from .forms import PostingForm
 
 # Create your views here.
 def index(request):
@@ -22,7 +22,7 @@ def posting_create(request):
     if request.method == 'POST':
         # [코드 수정] posting_form에 POST 방식으로 넘어온 PostingForm 저장
         posting_form = PostingForm(request.POST)
-
+        
         # [코드 수정] posting_form이 유효한지 확인하고 저장
         if posting_form.is_valid():
             posting_form.save()
