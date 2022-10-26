@@ -1,7 +1,7 @@
 # [코드 작성] django의 forms 모듈 불러오기
 from django import forms
 # [코드 작성] models.py의 Posting, Comment 모델 불러오기
-from .models import Posting, Comment
+from .models import Posting
 
 # [코드 작성] forms의 ModelForm을 상속받는 PostingForm 클래스 생성
 # [코드 작성] label은 각각 '제목'과 '내용'으로 설정
