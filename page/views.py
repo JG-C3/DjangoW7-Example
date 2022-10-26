@@ -43,35 +43,26 @@ def posting_create(request):
 # [Read & Create] 작성글 보기 & 댓글 작성
 def posting_detail(request, posting_id):
     # [코드 수정] get_object_or_404를 이용하여 존재하지 않는 객체를 불러오려고 하면 에러 페이지를 호출하도록 함
-    posting = get_object_or_404(Posting, id=posting_id)
+    posting = Posting.objects.get(id=posting_id)
     
     # [코드 작성] request.method가 'POST'일 경우 comment_form에 요청값 저장
     # [코드 작성] comment_form이 유효하면 commit=False를 이용하여 comment에 form 임시저장
     # [코드 작성] comment 객체의 posting 필드에 posting 객체를 저장하고, comment 저장
     # [코드 작성] CommentForm을 생성하여 posting_form에 저장
     # [코드 작성] request.method가 'POST'가 아닐 경우 CommentForm을 생성
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.posting = posting
-            comment.save()
-            return redirect('page:posting_detail', posting_id)
-    else :
-        comment_form = CommentForm()
-
+    
+    
     # [코드 수정] posting_id에 해당하는 posting 객체의 모든 댓글 불러오기
     # [코드 수정] Comment 모델 posting 필드의 related_name 활용
     # [코드 수정] None을 지우고 작성
-    comments = posting.comment_list.all()
+    comments = None
 
     context = {
         'posting': posting,
         # [코드 추가] comment_form을 딕셔너리 형식으로 html에 넘겨주기
-        'comment_form': comment_form,
+
         # [코드 추가] comments를 딕셔너리 형식으로 html에 넘겨주기
-        'comments': comments,
+
     }
     return render(request, 'page/posting_detail.html', context)
 
@@ -112,11 +103,8 @@ def posting_delete(request, posting_id):
     return redirect('page:posting_detail', posting_id)
 
 # [Delete] 댓글 삭제
-def comment_delete(request, posting_id, comment_id):
+def comment_delete():
     # [코드 작성] request.method가 'POST'일 경우 Comment 모델에서 comment_id에 해당하는 객체 불러오기
     # [코드 작성] comment 삭제하기
     # [코드 추가] posting_id에 해당하는 페이지로 redirect
-    if request.method == 'POST':
-        comment = get_object_or_404(Comment, id=comment_id)
-        comment.delete()
-        return redirect('page:posting_detail', posting_id)
+    return 

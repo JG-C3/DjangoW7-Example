@@ -53,7 +53,7 @@
             {% csrf_token %}
             <div>
               <!-- [코드 작성] Django에서 생성된 comment_form을 div태그 안쪽에 배치 -->
-              {{comment_form.as_div}}
+              
               <input class="button" type="submit" value="작성">
             </div>
           </form>
@@ -68,7 +68,7 @@
           </td>
           <td class="posting__comment__delete" rowspan="2">
             <!-- [코드 추가] POST 방식으로 댓글 삭제 후 action을 이용해 해당 url로 이동 -->
-            <form action="{% url 'page:comment_delete' posting_id=posting.id comment_id=comment.id %}" method="post">
+            <form action="" method="post">
               {% csrf_token %}
               <input type="submit" value="x">
             </form>

@@ -18,9 +18,4 @@ class PostingForm(forms.ModelForm):
 # [코드 작성] forms의 ModelForm을 상속받는 CommentForm 클래스 생성
 # [코드 작성] label은 ''로 설정
 # [코드 작성] Meta 클래스를 정의하여 Comment 모델을 기반으로 하고, 어떤 필드를 form으로 사용할 것인지 지정
-class CommentForm(forms.ModelForm):
-    content = forms.CharField(label='')
-    
-    class Meta:
-        model = Comment
-        fields = ['content',]
+
